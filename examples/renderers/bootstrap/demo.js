@@ -2,11 +2,18 @@ var defaultHtmlSequencerUi = require('./lib/defaultHtmlSequencerUi.js'),
     setupCache = require('./lib/cache.js'),
     intermediateHtmlStepUi = require('./lib/intermediateHtmlStepUi.js'),
     DefaultHtmlStepUi = require('./lib/defaultHtmlStepUi.js'),
+    intermediateHtmlStepUi = require('./lib/intermediateHtmlStepUi'),
     urlHash = require('./lib/urlHash.js'),
     insertPreview = require('./lib/insertPreview.js');
 
 window.onload = function() {
   sequencer = ImageSequencer();
+
+  $('button#new-ui').on('click', function(){
+    var loc = window.location.toString();
+    var newLoc  = loc.substr(0, loc.indexOf('examples/') + 9) + 'new/#steps=' + urlHash.getUrlHashParameter('steps');
+    window.location = newLoc;
+  })
 
   function refreshOptions() {
     // Load information of all modules (Name, Inputs, Outputs)

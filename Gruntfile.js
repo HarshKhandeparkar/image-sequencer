@@ -2,6 +2,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-browserify");
   grunt.loadNpmTasks("grunt-contrib-uglify-es");
   grunt.loadNpmTasks("grunt-browser-sync");
+  grunt.loadNpmTasks('grunt-css-import');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   require("matchdep")
     .filterDev("grunt-*")
@@ -57,6 +59,7 @@ module.exports = function(grunt) {
         dest: "dist/image-sequencer-ui.js"
       }
     },
+
     browserSync: {
       dev: {
         options: {
